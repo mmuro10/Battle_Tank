@@ -1,8 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+
 #include "TankPlayerController.h"
 
-/*ATank* ATankPlayerController::ATank* GetControlledTank() const;
+ATank*ATankPlayerController::GetConrolledTank() const
 {
-	Cast<Atank>(GetPawn());
+	return Cast<ATank>(GetPawn());
 }
