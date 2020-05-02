@@ -1,12 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "TankPlayerController.h"
-
-//tick
-	//super
-	//AimTowardsCrosshair();
-
 
 void ATankPlayerController::BeginPlay()
 {
@@ -21,8 +14,6 @@ void ATankPlayerController::BeginPlay()
 	{
 		UE_LOG(LogTemp, Warning, TEXT("PlayerController possessing: %s"), *(ControlledTank->GetName()));
 	}
-
-
 }
 ATank*ATankPlayerController::GetControlledTank() const
 {
@@ -34,8 +25,6 @@ void ATankPlayerController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	AimTowardsCrosshair();
-	//UE_LOG(LogTemp, Warning, TEXT("PlayerController ticking away"));
-
 }
 
 void ATankPlayerController::AimTowardsCrosshair()
@@ -66,8 +55,6 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) cons
 	return true;
 }
 
-
-
 bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVector& OutHitLocation) const
 {
 	FHitResult HitResult;
@@ -87,6 +74,7 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVec
 	return false;   /// line trace didn't succeed
 	return true;
 }
+
 bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const
 {
 	FVector CameraWorldLocation; // To be discarded
@@ -97,7 +85,4 @@ bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector& 
 		CameraWorldLocation,
 		LookDirection
 	);
-
-	//UE_LOG(LogTemp, Warning, TEXT("Look direction: %s"), *LookDirection.ToString());
-
 }
