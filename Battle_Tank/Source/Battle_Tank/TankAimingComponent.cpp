@@ -71,10 +71,6 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 	//UE_LOG(LogTemp, Warning, TEXT("AimAsRotator: %s"), *AimAsRotator.ToString());
 
 	//to move turret
-	auto TurretRotator = Turret->GetForwardVector().Rotation();
-	auto TurretAsRotator = AimDirection.Rotation();
-	auto TDeltaRotator = TurretAsRotator - TurretRotator;
-
 	Barrel->Elevate(DeltaRotator.Pitch); 
-	Turret->RotateTurret(TDeltaRotator.Yaw);
+	Turret->RotateTurret(DeltaRotator.Yaw);
 }
