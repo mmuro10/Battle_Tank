@@ -41,6 +41,13 @@ void ATank::SetTurretReference(UTankTurret* TurretToSet)
 {
 	TankAimingComponent->SetTurretReference(TurretToSet);
 }
+
+void ATank::Firing()
+{
+	auto Time = GetWorld()->GetTimeSeconds();
+	UE_LOG(LogTemp, Warning, TEXT("%f: FIRE!!!"), Time);
+}
+
 void ATank::AimAt(FVector OutHitLocation)
 {
 	TankAimingComponent->AimAt(OutHitLocation, LaunchSpeed);
