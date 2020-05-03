@@ -26,9 +26,10 @@ void ATank::Tick(float DeltaTime)
 }
 
 // Called to bind functionality to input
-void ATank::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
+void ATank::SetupPlayerInputComponent(class UInputComponent* InputComponent)
 {
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	Super::SetupPlayerInputComponent(InputComponent);
+
 }
 
 void ATank::SetBarrelReference(UTankBarrel* BarrelToSet)
@@ -36,6 +37,10 @@ void ATank::SetBarrelReference(UTankBarrel* BarrelToSet)
 	TankAimingComponent->SetBarrelReference(BarrelToSet);
 }
 
+void ATank::SetTurretReference(UTankTurret* TurretToSet)
+{
+	TankAimingComponent->SetTurretReference(TurretToSet);
+}
 void ATank::AimAt(FVector OutHitLocation)
 {
 	TankAimingComponent->AimAt(OutHitLocation, LaunchSpeed);
