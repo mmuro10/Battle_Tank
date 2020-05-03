@@ -19,7 +19,7 @@ public:
 	void Elevate(float ReletiveSpeed);
 private:
 	UPROPERTY(EditAnywhere, Category = Setup)
-		float MaxDegreesPerSecond = 20.0; //Max speed movement per tick
+		float MaxDegreesPerSecond = 5.0; //Max speed movement per tick
 
 	UPROPERTY(EditAnywhere, Category = Setup)
 		float MaxElevationDegrees = 30.0; //Max elevation for barrel
