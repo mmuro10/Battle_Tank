@@ -26,7 +26,7 @@ public:
 		void SetTurretReference(UTankTurret* TurretToSet);  //Added for Challenge make a UTankTurret Class
 	
 	UFUNCTION(BlueprintCallable)
-		void Firing();
+		void Fire();
 
 	void AimAt(FVector OutHitLocation);
 protected:
@@ -47,10 +47,16 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = Firing)
 		float LaunchSpeed = 100000;   //TODO find sensible default
+	
+	UPROPERTY(EditAnywhere, Category = Firing)
+		float ReloadTimeInSeconds = 3;
 
 	UPROPERTY(EditAnywhere, Category = Setup)
 		TSubclassOf<AProjectile> ProjectileBlueprint;
 
 	//Local barrel reference for spawning projectile
 	UTankBarrel* Barrel = nullptr;
+
+	
+	double LastFireTime = 0;
 };
