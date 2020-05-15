@@ -19,5 +19,8 @@ private:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	//Stop distance from goal
+	float AcceptanceRadius = 3000;
+
 	void BeginPlay() override;
 };
