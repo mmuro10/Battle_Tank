@@ -7,9 +7,9 @@
 #include "Tank.generated.h"
 
 class UTankBarrel;
-class UTankAimingComponent;
 class UTankTurret;
 class AProjectile;
+class UTankAimingComponent;
 class UTankMovementComponent;
 
 UCLASS()
