@@ -21,10 +21,13 @@ class BATTLE_TANK_API ATankPlayerController : public APlayerController
 	virtual void Tick(float DeltaTime) override;
 
 	void BeginPlay() override;
+protected:
 
+	UFUNCTION(BluePrintCallable, Category = Setup)
+		ATank*GetControlledTank() const;
 private:
 
-	ATank*GetControlledTank() const;
+	
 
 
 	//start barrel so that a shot would it where crosshair intersects the world
