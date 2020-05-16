@@ -16,6 +16,11 @@ ATank::ATank()
 
 }
 
+void ATank::BeginPlay()
+{
+	Super::BeginPlay();
+}
+
 // Called every frame
 void ATank::Tick(float DeltaTime)
 {
@@ -39,5 +44,7 @@ void ATank::Fire()
 
 void ATank::AimAt(FVector OutHitLocation)
 {
+	if (!TankAimingComponent) { return; }
+
 	TankAimingComponent->AimAt(OutHitLocation, LaunchSpeed);
 }
