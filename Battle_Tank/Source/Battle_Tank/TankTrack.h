@@ -20,6 +20,11 @@ public:
 
 	//Force in Newtons
 	UPROPERTY(EditDefaultsOnly)
-		float TrackMaxDrivingForce = 400000; // Assume 40k tank
+		float TrackMaxDrivingForce = 40000000; // Assume 40k tank
+
+private:
+	UTankTrack();
+
+	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction * ThisTickFunction) override;
 	
 };
