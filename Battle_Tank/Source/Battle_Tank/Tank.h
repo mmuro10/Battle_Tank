@@ -9,7 +9,6 @@
 class UTankBarrel;
 class UTankTurret;
 class AProjectile;
-class UTankAimingComponent;
 
 UCLASS()
 class BATTLE_TANK_API ATank : public APawn
@@ -20,15 +19,6 @@ public:
 	
 	UFUNCTION(BlueprintCallable)
 		void Fire();
-
-	void AimAt(FVector OutHitLocation);
-	
-	
-protected:
-	
-	UPROPERTY(BlueprintReadOnly)
-		UTankAimingComponent* TankAimingComponent = nullptr;
-
 private:	
 	// Sets default values for this pawn's properties
 	ATank();
@@ -49,7 +39,6 @@ private:
 
 	//Local barrel reference for spawning projectile
 	UTankBarrel* Barrel = nullptr;
-
 	
 	double LastFireTime = 0;
 };

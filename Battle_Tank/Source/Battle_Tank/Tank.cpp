@@ -4,7 +4,6 @@
 #include "Tank.h"
 #include "Engine/World.h"
 #include "TankBarrel.h"
-#include "TankAimingComponent.h"
 #include "Projectile.h"
 
 // Sets default values
@@ -41,11 +40,4 @@ void ATank::Fire()
 		Projectile->LaunchProjectile(LaunchSpeed);
 		LastFireTime = FPlatformTime::Seconds();
 	}
-}
-
-void ATank::AimAt(FVector OutHitLocation)
-{
-	if (!ensure(TankAimingComponent)) { return; }
-
-	TankAimingComponent->AimAt(OutHitLocation, LaunchSpeed);
 }
