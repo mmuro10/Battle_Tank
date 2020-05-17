@@ -30,8 +30,8 @@ class BATTLE_TANK_API UTankAimingComponent : public UActorComponent
 
 public:	
 	
+	
 	void AimAt(FVector OutHitLocation);
-	void MoveBarrelTowards(FVector AimDirection);
 
 	UFUNCTION(BluePrintCallable, Category = Setup)
 		void Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
@@ -40,15 +40,23 @@ public:
 		void Fire();
 
 protected:
-	// Sets default values for this component's properties
-	UTankAimingComponent();
+	
 
 	UPROPERTY(BluePrintReadOnly, Category = State)
 		EFiringState FiringState = EFiringState::Aiming;
-private:	
+private:
+	// Sets default values for this component's properties
+	UTankAimingComponent();
+
+	virtual void BeginPlay() override;
+	
+	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
+
+	void MoveBarrelTowards(FVector AimDirection);	
+
 	UTankBarrel* Barrel = nullptr;
 	UTankTurret* Turret = nullptr;
-	
+
 	UPROPERTY(EditAnywhere, Category = Firing)
 		float LaunchSpeed = 10000;
 
