@@ -13,31 +13,3 @@ ATank::ATank()
 	PrimaryActorTick.bCanEverTick = false;
 
 }
-
-void ATank::BeginPlay()
-{
-	Super::BeginPlay();
-}
-
-// Called every frame
-void ATank::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-}
-
-void ATank::Fire()
-{
-	if (!ensure(Barrel)) { return; }
-
-	bool IsReloaded = (FPlatformTime::Seconds() - LastFireTime > ReloadTimeInSeconds);
-	if (IsReloaded) 
-	{
-		auto Projectile = GetWorld()->SpawnActor<AProjectile>(
-		ProjectileBlueprint, 
-		Barrel->GetSocketLocation(FName("Projectile")),
-		Barrel->GetSocketRotation(FName("Projectile")));
-
-		Projectile->LaunchProjectile(LaunchSpeed);
-		LastFireTime = FPlatformTime::Seconds();
-	}
-}
