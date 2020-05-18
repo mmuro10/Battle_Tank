@@ -78,6 +78,6 @@ private:
 	double LastFireTime = 0;
 	FVector AimDirection;
 
-	int32 RoundsLeft = 0;
+	int32 RoundsLeft = 3;
 
 };
