@@ -75,9 +75,13 @@ private:
 	UPROPERTY(EditAnywhere, Category = Setup)
 		TSubclassOf<AProjectile> ProjectileBlueprint;
 
+	UPROPERTY(EditDefaultsOnly, Category = Setup)
+	int32 RoundsLeft = 3;
+	
 	double LastFireTime = 0;
+	
 	FVector AimDirection;
 
-	int32 RoundsLeft = 3;
+	
 
 };
