@@ -12,7 +12,7 @@ UTankAimingComponent::UTankAimingComponent()
 {
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
-	//bWantsBeginPlay = true;
+	bWantsBeginPlay = true;
 	PrimaryComponentTick.bCanEverTick = true; //TODO should this tick?
 	// ...
 }
@@ -35,7 +35,7 @@ void UTankAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, F
 	{
 		FiringState = EFiringState::OutofAmmo;
 	}
-	else if ((FPlatformTime::Seconds() - LastFireTime < ReloadTimeInSeconds))
+	else if ((FPlatformTime::Seconds() - LastFireTime) < ReloadTimeInSeconds)
 	{
 		FiringState = EFiringState::Reloading;
 	}
@@ -96,7 +96,7 @@ void UTankAimingComponent::AimAt(FVector OutHitLocation)
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 {
 
-	if (!ensure(Barrel || Turret)) { return; }
+	if (!ensure(Barrel) || !ensure(Turret)) {return;}
 
 	//workout dif between current barrel reaction and AimDirection
 	auto BarrelRotator = Barrel->GetForwardVector().Rotation();
