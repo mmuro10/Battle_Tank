@@ -6,16 +6,12 @@
 #include "Components/ActorComponent.h"
 #include "TankAimingComponent.generated.h"
 
-//forward decleration
-class UTankBarrel; 
-class UTankTurret;
-
 UENUM()
 enum class EFiringState : uint8
 {
+	Locked,
 	Reloading,
 	Aiming,
-	Locked,
 	OutofAmmo
 };
 

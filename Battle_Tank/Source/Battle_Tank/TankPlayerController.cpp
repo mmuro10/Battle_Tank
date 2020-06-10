@@ -6,18 +6,9 @@
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-
 	auto AimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();
+	if (!ensure(AimingComponent)) { return; }
 	FoundAimingComponent(AimingComponent);
-
-	if (ensure(AimingComponent))
-	{
-		FoundAimingComponent(AimingComponent);
-	}
-	else
-	{
-		UE_LOG(LogTemp,Warning,TEXT("PlayerController can't find aiming compoentn at Begin Play"))
-	}
 }
 
 // Called every frame
@@ -29,15 +20,15 @@ void ATankPlayerController::Tick(float DeltaTime)
 
 void ATankPlayerController::AimTowardsCrosshair()
 {
-	if (!GetPawn()) { return; }
-
+	if (!GetPawn()) { return; } // e.g. if not possessing
 	auto AimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();
-	FoundAimingComponent(AimingComponent);
+	if (!ensure(AimingComponent)) { return; }
 
-	FVector OutHitLocation; //out parameter
-	if (GetSightRayHitLocation(OutHitLocation))
+	FVector HitLocation; // Out parameter
+	bool bGotHitLocation = GetSightRayHitLocation(HitLocation);
+	if (bGotHitLocation) // Has "side-effect", is going to line trace
 	{
-		AimingComponent->AimAt(OutHitLocation);
+		AimingComponent->AimAt(HitLocation);
 	}
 }
 
