@@ -7,6 +7,7 @@
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Particles/ParticleSystemComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "PhysicsEngine/RadialForceComponent.h"
 #include "Projectile.generated.h"
 
 UCLASS()
@@ -27,7 +28,10 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	
-private:	
+private:
+	UFUNCTION()
+		void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
+	
 	UProjectileMovementComponent*  ProjectileMovement = nullptr;
 
 	UPROPERTY(VisibleAnywhere, Category = Components)
@@ -39,6 +43,7 @@ private:
 	UPROPERTY(VisibleAnywhere, Category = Components)
 		UParticleSystemComponent* ImpactBlast = nullptr;
 
-	UFUNCTION()
-		void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
-};
+	UPROPERTY(VisibleAnywhere, Category = Components)
+		URadialForceComponent* ExplosionForce = nullptr;
+
+	};
