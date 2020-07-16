@@ -18,8 +18,6 @@ private:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	
-
 	void BeginPlay() override;
 	
 protected:

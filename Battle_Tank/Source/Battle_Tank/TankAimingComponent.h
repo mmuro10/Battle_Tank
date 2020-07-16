@@ -43,7 +43,6 @@ public:
 	
 protected:
 	
-
 	UPROPERTY(BluePrintReadOnly, Category = State)
 		EFiringState FiringState = EFiringState::Aiming;
 
